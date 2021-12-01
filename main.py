@@ -1,9 +1,9 @@
 #!/usr/bin/python3.5
 
-URL = "http://futro-s550:9981"
+URL = "http://192.168.10.11:9981"               # your TVHeadend installation
 ENDPOINT = "/api/dvr/entry/grid_finished"
-USER = "futro"
-PASS = "futro"
+USER = "futro"                                  # your TVHeadend user
+PASS = "futro"                                  # your TVHeadend password
 
 import sys
 if sys.version_info.major < 3:
