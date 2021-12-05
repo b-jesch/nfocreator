@@ -134,7 +134,7 @@ recording = data['entries'][0]
 print(json.dumps(recording, sort_keys=True, indent=4, ensure_ascii=False))
 
 # create nfo filename from recording path
-nfo = "%s.nfo" % path.splitext((recording['filename']))[0]
+basename = path.splitext((recording['filename']))[0]
 
 # determine recording type
 rectype = 'movie'
@@ -142,11 +142,9 @@ if valid(recording, 'episode_disp'): rectype = 'tvshow'
 
 # download online poster/fanart image to recording folder
 if valid(recording, 'image'):
-    nfo_path = path.dirname(nfo) + '/poster' + path.splitext(recording.get('image'))[1]
-    download_images(recording.get('image'), nfo_path)
+    download_images(recording.get('image'), basename + '-poster' + path.splitext(recording.get('image'))[1])
 if valid(recording, 'fanart_image'):
-    nfo_path = path.dirname(nfo) + '/fanart' + path.splitext(recording.get('image'))[1]
-    download_images(recording.get('image'), nfo_path)
+    download_images(recording.get('image'), basename + '-fanart' + path.splitext(recording.get('image'))[1])
 
 xml = ElTr.ElementTree(ElTr.fromstring(template_movie)) if rectype == 'movie' else ElTr.ElementTree(ElTr.fromstring(template_episode))
 root = xml.getroot()
@@ -185,5 +183,5 @@ if valid(recording, 'credits'):
             set_xml_content(actor, 'name', name)
 
 # write NFO
-with open(nfo, 'w') as f: f.write(ElTr.tostring(root, encoding='UTF-8', method='xml').decode('utf-8'))
+with open("%s.nfo" % basename, 'w') as f: f.write(ElTr.tostring(root, encoding='UTF-8', method='xml').decode('utf-8'))
 exit(0)
