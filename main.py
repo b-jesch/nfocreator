@@ -116,6 +116,7 @@ def download_images(image, destination):
 
 # get last record data from TVH API
 
+
 try:
     response = requests.get(URL + ENDPOINT, auth=HTTPDigestAuth(USER, PASS), params={'limit': 1})
     response.raise_for_status()
@@ -167,8 +168,12 @@ if rectype == 'tvshow':
     set_xml_content(root, 'episode', re.findall('[0-9]+', recording.get('episode_disp'))[1])
 else:
     set_xml_content(root, 'title', recording.get('disp_title'))
-    if valid(recording, 'subtitle'): set_xml_content(root, 'summary', recording.get('disp_subtitle'))
-    else: set_xml_content(root, 'summary', recording.get('disp_extratext'))
+    if valid(recording, 'disp_subtitle') and recording.get('disp_title') != recording.get('disp_title'):
+        set_xml_content(root, 'summary', recording.get('disp_subtitle'))
+    elif valid(recording, 'disp_extratetx') and recording.get('disp_title') != recording.get('disp_extratext'):
+        set_xml_content(root, 'summary', recording.get('disp_extratext'))
+    else:
+        pass
 
 # handle actors/credits if available
 
