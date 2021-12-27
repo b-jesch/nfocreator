@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/python3.8
 
 URL = "http://192.168.10.11:9981"               # your TVHeadend installation
 ENDPOINT = "/api/dvr/entry/grid_finished"
@@ -6,6 +6,11 @@ USER = "futro"                                  # your TVHeadend user
 PASS = "futro"                                  # your TVHeadend password
 
 import sys
+
+if sys.version_info.major < 3:
+    sys.stderr.write('You need python 3 to run this script\n')
+    exit(1)
+
 import json
 import requests
 import re
@@ -84,9 +89,7 @@ def set_xml_content(parent, tag, content=None, append=False):
         identifier = ElTr.SubElement(parent, tag)
     else:
         identifier = ElTr.SubElement(parent, tag) if parent.find(tag) is None else parent.find(tag)
-    if content is not None:
-        if type(content).__name__ == 'int': identifier.text = str(content)
-        else: identifier.text = content
+    if content is not None: identifier.text = str(content)
     return identifier
 
 
@@ -181,5 +184,5 @@ if valid(recording, 'credits'):
             set_xml_content(actor, 'name', name)
 
 # write NFO
-with open(basepath + '.nfo', 'w') as f: f.write(ElTr.tostring(root, encoding='UTF-8', method='xml'))
+with open(basepath + '.nfo', 'w') as f: f.write(ElTr.tostring(root, encoding='UTF-8', method='xml').decode('utf-8'))
 exit(0)
