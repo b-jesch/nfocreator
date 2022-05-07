@@ -8,8 +8,10 @@ The script extracts all information from the dvr database and use a TVH Api call
 
 ### Usage
 
-simply get the script from here and make it executable. Set the full path of the script into the post processor field in the recording tab.
+simply get the script from here and make it executable.
 
 > wget https://raw.githubusercontent.com/b-jesch/nfocreator/master/main.py -O main.py
 > 
 > chmod a+x main.py
+
+ Change the line 3-6 (URL, USER, PASS) within the script to your requirements. Set the full path of the script into the post processor field in the recording tab.
