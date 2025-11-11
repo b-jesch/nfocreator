@@ -10,7 +10,9 @@ The script extracts all information from the dvr database and use a TVH Api call
 
 simply determine your python version and get the script from here and make it executable.
 > type in a terminal, you should get your default python interpreter
+> 
 > python --version
+>
 > wget https://raw.githubusercontent.com/b-jesch/nfocreator/master/main.py -O main.py # for python 2.x
 > 
 > wget https://raw.githubusercontent.com/b-jesch/nfocreator/Python3.8/main.py -O main.py # for python 3.x
