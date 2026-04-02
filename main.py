@@ -129,7 +129,7 @@ if not data.get('entries', False):
     exit(1)
 
 recording = data['entries'][0]
-print(json.dumps(recording, sort_keys=True, indent=4, ensure_ascii=False).encode('UTF-8))
+print(json.dumps(recording, sort_keys=True, indent=4, ensure_ascii=False).encode('UTF-8'))
 
 # create nfo filename from recording path
 basepath = path.splitext((recording['filename']))[0]
