@@ -19,4 +19,4 @@ simply determine your python version and get the script from here and make it ex
 > 
 > chmod a+x main.py
 
- Change the line 3-6 (URL, USER, PASS) within the script to your requirements. Set the full path of the script into the post processor field in the recording tab.
+ Change the line 3-6 (URL, USER, PASS) within the script to your requirements. Set the full path of the script into the post processor field in the recording tab (configuration >> recordings) of TVHeadend.
