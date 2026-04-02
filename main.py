@@ -160,7 +160,8 @@ set_xml_content(root, 'year', recording.get('copyright_year'))
 set_xml_content(root, 'dateadded', datetime.utcfromtimestamp(recording.get('stop_real')).strftime('%Y-%m-%d %H:%M:%S'))
 
 if rectype == 'tvshow':
-    if valid(recording, 'subtitle'): set_xml_content(root, 'title', recording.get('disp_subtitle'))
+    if valid(recording, 'disp_title'): set_xml_content(root, 'title', recording.get('disp_title'))
+    elif valid(recording, 'disp_subtitle'): set_xml_content(root, 'title', recording.get('disp_subtitle'))
     else: set_xml_content(root, 'title', recording.get('disp_extratext'))
     set_xml_content(root, 'showtitle', recording.get('disp_title'))
     set_xml_content(root, 'season', re.findall('[0-9]+', recording.get('episode_disp'))[0])
