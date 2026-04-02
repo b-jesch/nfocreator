@@ -17,6 +17,6 @@ simply determine your python version and get the script from here and make it ex
 > 
 > ```wget https://raw.githubusercontent.com/b-jesch/nfocreator/Python3.8/main.py -O main.py``` # for python 3.x
 > 
-> chmod a+x main.py
+> ```chmod a+x main.py```
 
  Change the line 3-6 (URL, USER, PASS) within the script to your requirements. Set the full path of the script into the post processor field in the recording tab (configuration >> recordings) of TVHeadend.
